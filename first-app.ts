@@ -155,7 +155,7 @@ let role: Role; // 'admin', "user", "editor"
 role = 'admin';
 role = "user";
 role = "editor";
-role = "not functione" // not working
+//role = "not functione" // not working
 
 
 function performAction(action: string, role: Role) {
@@ -164,3 +164,36 @@ function performAction(action: string, role: Role) {
     }
 }
 
+// beides das gleiche
+let roles: Array<Role>;
+let roles1: Role[];
+
+roles = ['admin', 'editor', 'editor']
+
+type DataStorage<T> = {
+    storage: T[];
+    add: (data: T ) => void;
+    
+};
+
+const textStorage: DataStorage<string> = {
+    storage: [],
+    add(data) {}
+}
+
+const userStorage: DataStorage<User> = {
+    storage: [],
+    add(user) {}
+}
+
+function merge<T, U>(a: T, b: U) {
+    return {
+        ...a,
+        ...b
+    };
+}
+
+const usera = merge<{name: string}, {age: number}>({name: 'Max'}, {age: 15});
+
+
+console.log(usera);
